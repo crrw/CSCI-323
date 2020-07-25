@@ -1,21 +1,36 @@
+import java.io.*;
 import java.util.*;
 public class RLE{
-    public static void main(String[] args){
-        String s = "wwwwaaadexxxxxxywww";
-        System.out.println(rle(convert(s)));
-        String w = "w12a3d1e1x6y1w3";
-        String d = r(w);
-        System.out.println(d);
-        System.out.println(s);
-        System.out.println(decomp(d));
-        String test ="wwwwwwwwwwww";
-
-        System.out.println(test.length());
+    public static void main(String[] args)throws FileNotFoundException{
+        String s = readFile();
+        System.out.println(rle(s));
+        String t = readDecomp();
+        System.out.println(decomp(reverse(t)));
     }
 
-    public static String convert(String s){
-        return s.replaceAll("\\s+", "");
+    public static String readFile()throws FileNotFoundException{
+        File file = new File("input1.txt");
+        Scanner sc = new Scanner(file);
+        StringBuilder sb = new StringBuilder();
+
+        while(sc.hasNext()){
+            sb.append(sc.nextLine());
+        }
+
+        return sb.toString();
     }
+    public static String readDecomp()throws FileNotFoundException{
+        File file = new File("rleDecomp.txt");
+        Scanner sc = new Scanner(file);
+        StringBuilder sb = new StringBuilder();
+
+        while(sc.hasNext()){
+            sb.append(sc.nextLine());
+        }
+
+        return sb.toString();
+    }
+    
     public static String rle(String s){
         StringBuilder sb = new StringBuilder();
         int cnt = 1;
@@ -42,7 +57,7 @@ public class RLE{
         return sb.toString();
     }
 
-    public static String r(String s){
+    public static String reverse(String s){
         StringBuilder sb = new StringBuilder(); 
         if(s.length() == 0) return ""; 
 
