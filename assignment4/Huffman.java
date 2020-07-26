@@ -116,7 +116,7 @@ public class Huffman{
         end = System.currentTimeMillis();
         decodingTime = (end-start);
         System.out.println();
-        Print p = new Print(encodingTime, decodingTime, preencoding, postencoding); 
+        Print p = new Print(encodingTime, decodingTime, preencoding*8, postencoding); 
         p.print(p);
     }
 }

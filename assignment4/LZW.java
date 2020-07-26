@@ -21,7 +21,7 @@ public class LZW {
         decodingTime = (end-start);
         System.out.println(t);
         postencoding = t.length();
-        Print p = new Print(encodingTime, decodingTime, preencoding, postencoding);
+        Print p = new Print(encodingTime, decodingTime, preencoding*8, postencoding);
         p.print(p);
     }
 

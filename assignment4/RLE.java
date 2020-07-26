@@ -22,7 +22,7 @@ public class RLE{
         System.out.println("Decoding: " + t);
         preencoding = s.length(); 
 
-        Print p = new Print(encodingTime, decodingTime, preencoding, postencoding); 
+        Print p = new Print(encodingTime, decodingTime, preencoding*8, postencoding); 
         p.print(p);
     }
 
