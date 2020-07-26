@@ -16,8 +16,9 @@ public class Print {
         this.decodeLength = decodeLength; 
     }
     public static void print(Print p) {
-        System.out.printf("%10s %10s %100s", "Length preEncode", "Length postEncoding", "Time encoding","\n");
-        System.out.printf("%1d %10d %10dms", p.encodeLength, p.decodeLength, p.encodeTime);
+        System.out.println();
+        System.out.printf("%15s %25s %25s %15s", "Length preEncode", "Length postEncoding", "Time encoding","\n");
+        System.out.printf("%10d %25d %25dms", p.encodeLength, p.decodeLength, p.encodeTime);
         System.out.println();
     }
 }

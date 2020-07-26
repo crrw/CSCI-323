@@ -22,14 +22,13 @@ class Node{
 }
 
 public class Huffman{
-    static int count1=0;
-    static String data1="";
-	static int Originlength=0;
-	static long startTime=0;
-	static long stopTime=0;
-	static int length;
+    static int preencoding = 0;
+    static int postencoding = 0;
+    static long encodingTime = 0;
+    static long decodingTime = 0;
     public static void main(String[] args) throws FileNotFoundException{
         String s = readFile();
+        preencoding = s.length();
         buildHuffmanTree(s);
     }
     public static String readFile()throws FileNotFoundException{
@@ -95,21 +94,29 @@ public class Huffman{
 
 		Node root = pq.peek();
 
-		Map<Character, String> huffmanCode = new HashMap<>();
-		encode(root, "", huffmanCode);
+        Map<Character, String> huffmanCode = new HashMap<>();
+        long start = System.currentTimeMillis();
+        encode(root, "", huffmanCode);
+        long end = System.currentTimeMillis();
 		StringBuilder sb = new StringBuilder();
 		for (char c: text.toCharArray()) {
 			sb.append(huffmanCode.get(c));
-		}
-		stopTime=System.currentTimeMillis();
-		System.out.println("Encoding : " + sb);
-        length=sb.length();
-
-		int index = -1;
-		System.out.print("Decoding: ");
+        }
+        encodingTime = (end-start);
+        System.out.println("Encoding : " + sb);
+        
+        int index = -1;
+        postencoding = sb.length();
+        System.out.println();
+        System.out.print("Decoding: ");
+        start = System.currentTimeMillis();
 		while (index < sb.length() - 2) {
 			index = decode(root, index, sb);
-		}
-		System.out.println();
+        }
+        end = System.currentTimeMillis();
+        decodingTime = (end-start);
+        System.out.println();
+        Print p = new Print(encodingTime, decodingTime, preencoding, postencoding); 
+        p.print(p);
     }
 }

@@ -2,13 +2,19 @@ import java.io.*;
 import java.util.*;
 public class RLE{
     public static void main(String[] args)throws FileNotFoundException{
+        
         String s = readFile();
+        long start = System.currentTimeMillis();
         System.out.println(rle(s));
+        long end = System.currentTimeMillis();
         String t = rle(s);
+        System.out.println();
         t = decomp(reverse(t));
         System.out.println(t);
+        System.out.println();
         System.out.println("Pre compression size: " + s.length());
         System.out.println("Post compression size: " +t.length());
+        System.out.println("Total time taken to encode String: " + (end-start)+"ms");
     }
 
     public static String readFile()throws FileNotFoundException{
