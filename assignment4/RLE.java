@@ -4,10 +4,11 @@ public class RLE{
     public static void main(String[] args)throws FileNotFoundException{
         String s = readFile();
         System.out.println(rle(s));
-        // String t = readDecomp();?
         String t = rle(s);
         t = decomp(reverse(t));
         System.out.println(t);
+        System.out.println("Pre compression size: " + s.length());
+        System.out.println("Post compression size: " +t.length());
     }
 
     public static String readFile()throws FileNotFoundException{
