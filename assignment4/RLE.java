@@ -27,7 +27,7 @@ public class RLE{
     }
 
     public static String readFile()throws FileNotFoundException{
-        File file = new File("C:\\Users\\Aasish\\Desktop\\323\\input\\input1.txt");
+        File file = new File("input1.txt");
         Scanner sc = new Scanner(file);
         StringBuilder sb = new StringBuilder();
 
