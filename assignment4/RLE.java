@@ -4,23 +4,14 @@ public class RLE{
     public static void main(String[] args)throws FileNotFoundException{
         String s = readFile();
         System.out.println(rle(s));
-        String t = readDecomp();
-        System.out.println(decomp(reverse(t)));
+        // String t = readDecomp();
+        String t = rle(s);
+        t = decomp(reverse(t));
+        System.out.println(t);
     }
 
     public static String readFile()throws FileNotFoundException{
-        File file = new File("input1.txt");
-        Scanner sc = new Scanner(file);
-        StringBuilder sb = new StringBuilder();
-
-        while(sc.hasNext()){
-            sb.append(sc.nextLine());
-        }
-
-        return sb.toString();
-    }
-    public static String readDecomp()throws FileNotFoundException{
-        File file = new File("rleDecomp.txt");
+        File file = new File("C:\\Users\\Aasish\\Desktop\\323\\input\\input1.txt");
         Scanner sc = new Scanner(file);
         StringBuilder sb = new StringBuilder();
 
