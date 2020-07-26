@@ -13,6 +13,7 @@ public class RLE{
         long end = System.currentTimeMillis();
         encodingTime = (end-start);
         String t = rle(s);
+        postencoding = t.length();
         System.out.println();
         start = System.currentTimeMillis();
         t = decomp(reverse(t));
@@ -20,14 +21,13 @@ public class RLE{
         decodingTime = (end-start);
         System.out.println("Decoding: " + t);
         preencoding = s.length(); 
-        postencoding = t.length();
 
         Print p = new Print(encodingTime, decodingTime, preencoding, postencoding); 
         p.print(p);
     }
 
     public static String readFile()throws FileNotFoundException{
-        File file = new File("input1.txt");
+        File file = new File("input2.txt");
         Scanner sc = new Scanner(file);
         StringBuilder sb = new StringBuilder();
 

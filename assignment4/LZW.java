@@ -2,14 +2,27 @@ import java.util.*;
 import java.io.*;
 
 public class LZW {
+    static int preencoding = 0;
+    static int postencoding = 0;
+    static long encodingTime = 0;
+    static long decodingTime = 0;
     public static void main(String[] args)throws FileNotFoundException{
         // String s = readFile();
-        String s = "abcdefghijklmnopqrstuvwxyz";
-        List<Integer> comp = new ArrayList();
-        comp = compress(s);
+        String s = readFile();
+        long start = System.currentTimeMillis();
+        List<Integer> comp = compress(s);
+        long end = System.currentTimeMillis();
+        encodingTime = (end-start);
+        preencoding = s.length();
         System.out.println(comp);
+        start = System.currentTimeMillis();
         String t = decomp(comp);
+        end = System.currentTimeMillis();
+        decodingTime = (end-start);
         System.out.println(t);
+        postencoding = t.length();
+        Print p = new Print(encodingTime, decodingTime, preencoding, postencoding);
+        p.print(p);
     }
 
     public static String readFile()throws FileNotFoundException{
@@ -60,8 +73,9 @@ public class LZW {
 
         String s = ""+(char)(int)list.remove(0);
         String res = s;
-
-        for(int i : list){
+        System.out.println("\n");
+        for(Integer i : list){
+            if(i != null){
             String curr; 
             if(hm.containsKey(i)){
                 curr = hm.get(i);
@@ -76,6 +90,7 @@ public class LZW {
             hm.put(size++, s+curr.charAt(0));
             s = curr;
         }
+    }
         return res.toString();
     }
 }
