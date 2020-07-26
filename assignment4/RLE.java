@@ -1,20 +1,29 @@
 import java.io.*;
 import java.util.*;
 public class RLE{
+    static int preencoding = 0;
+    static int postencoding = 0;
+    static long encodingTime = 0;
+    static long decodingTime = 0;
     public static void main(String[] args)throws FileNotFoundException{
         
         String s = readFile();
         long start = System.currentTimeMillis();
-        System.out.println(rle(s));
+        System.out.println("Encoding: " + rle(s));
         long end = System.currentTimeMillis();
+        encodingTime = (end-start);
         String t = rle(s);
         System.out.println();
+        start = System.currentTimeMillis();
         t = decomp(reverse(t));
-        System.out.println(t);
-        System.out.println();
-        System.out.println("Pre compression size: " + s.length());
-        System.out.println("Post compression size: " +t.length());
-        System.out.println("Total time taken to encode String: " + (end-start)+"ms");
+        end = System.currentTimeMillis();
+        decodingTime = (end-start);
+        System.out.println("Decoding: " + t);
+        preencoding = s.length(); 
+        postencoding = t.length();
+
+        Print p = new Print(encodingTime, decodingTime, preencoding, postencoding); 
+        p.print(p);
     }
 
     public static String readFile()throws FileNotFoundException{
