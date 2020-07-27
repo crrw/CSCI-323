@@ -35,7 +35,6 @@ public class StringSearch{
             }
             if(j == find.length()){
                 bfIndex.add(i);
-                System.out.println("Found at: " + i);
             }
         }
     }
