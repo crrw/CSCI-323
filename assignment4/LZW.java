@@ -6,6 +6,7 @@ public class LZW {
     static int postencoding = 0;
     static long encodingTime = 0;
     static long decodingTime = 0;
+    static double ratio = 0;
     public static void main(String[] args)throws FileNotFoundException{
         // String s = readFile();
         String s = readFile();
@@ -23,6 +24,8 @@ public class LZW {
         postencoding = t.length();
         Print p = new Print(encodingTime, decodingTime, preencoding*8, postencoding);
         p.print(p);
+        ratio = (double)preencoding/(double)postencoding;
+        System.out.println("Compression Ratio: " + ratio);
     }
 
     public static String readFile()throws FileNotFoundException{

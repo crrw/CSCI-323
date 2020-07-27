@@ -5,6 +5,7 @@ public class RLE{
     static int postencoding = 0;
     static long encodingTime = 0;
     static long decodingTime = 0;
+    static double ratio = 0;
     public static void main(String[] args)throws FileNotFoundException{
         
         String s = readFile();
@@ -23,7 +24,9 @@ public class RLE{
         preencoding = s.length(); 
 
         Print p = new Print(encodingTime, decodingTime, preencoding*8, postencoding); 
+        ratio = (double)postencoding/(double)preencoding;
         p.print(p);
+        System.out.println("Compression ratio: " + ratio);
     }
 
     public static String readFile()throws FileNotFoundException{

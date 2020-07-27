@@ -25,7 +25,8 @@ public class Huffman{
     static int preencoding = 0;
     static int postencoding = 0;
     static long encodingTime = 0;
-    static long decodingTime = 0;
+	static long decodingTime = 0;
+	static double ratio = 0;
     public static void main(String[] args) throws FileNotFoundException{
         String s = readFile();
         preencoding = s.length();
@@ -117,6 +118,8 @@ public class Huffman{
         decodingTime = (end-start);
         System.out.println();
         Print p = new Print(encodingTime, decodingTime, preencoding*8, postencoding); 
-        p.print(p);
+		p.print(p);
+		ratio = (double)preencoding/(double)postencoding;
+		System.out.println("Compression ratio: " + ratio);
     }
 }
