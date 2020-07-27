@@ -4,11 +4,13 @@ import java.io.*;
 public class StringSearch{
     static List<Integer> bfIndex;
     public static void main(String[] args)throws FileNotFoundException{
-        String s = readFile(1);
-        String findF = "free";
-        String findS = "brave"; 
-        String findT = "nation";
-        bruteForce(s, findT);
+        bfIndex = new ArrayList();
+        String s = readFile(2);
+        System.out.println(s);
+        String findF = "FREE";
+        String findS = "BRAVE"; 
+        String findT = "NATION";
+        bruteForce(s, findF);
         System.out.print(bfIndex);
     }
     public static String readFile(int n)throws FileNotFoundException{
@@ -20,19 +22,20 @@ public class StringSearch{
         while(sc.hasNext()){
             sb.append(sc.nextLine());
         }
-        return sb.toString().toLowerCase();
+        return sb.toString().toUpperCase();
     }
 
     public static void bruteForce(String text, String find){
-        bfIndex = new ArrayList();
-        for(int i=0; i<text.length()-find.length()+1; i++){
-            for(int j=0; j<find.length(); j++){
+        for(int i=0; i<=text.length()-find.length(); i++){
+            int j;
+            for(j=0; j<find.length(); j++){
                 if(text.charAt(i+j) != find.charAt(j)){
                     break;
                 }
-                else if(j == find.length()){
-                    bfIndex.add(i);
-                }
+            }
+            if(j == find.length()){
+                bfIndex.add(i);
+                System.out.println("Found at: " + i);
             }
         }
     }
