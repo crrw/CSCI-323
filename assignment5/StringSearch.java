@@ -14,18 +14,22 @@ public class StringSearch{
         searchIndex = 1;
         inputTextMap.put(1, "Gettysburg Address");
         inputTextMap.put(2, "Star Spangled Banner");
-        inputText = inputTextMap.get(textIndex);
+        inputText = inputTextMap.get(1);
 
         String s = readFile(textIndex);
 
         searchTextMap.put(1,"FREE");
         searchTextMap.put(2,"BRAVE");
         searchTextMap.put(3,"NATION");
-        searchText = searchTextMap.get(searchIndex);
-        bruteForce(s, searchTextMap.get(searchIndex));
+        for(int i=1; i<=3; i++){
+            searchText = searchTextMap.get(searchIndex);
+            bruteForce(s, searchTextMap.get(searchIndex++));
+        }
+        
     }
     public static String readFile(int n)throws FileNotFoundException{
         long start = System.currentTimeMillis();
+        time = 0;
         time = start;
         String read = "input"+Integer.toString(n)+".txt";
         File file = new File(read);
@@ -53,6 +57,7 @@ public class StringSearch{
                 time = end-time;
                 Print p = new Print(i,comp,time,searchText,inputText);
                 p.print(p);
+                return;
             }
         }
     }
