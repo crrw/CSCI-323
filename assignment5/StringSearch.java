@@ -2,16 +2,20 @@ import java.util.*;
 import java.io.*;
 
 public class StringSearch{
-    static List<Integer> bfIndex;
+    static Map<Integer, String> hm;
     public static void main(String[] args)throws FileNotFoundException{
-        bfIndex = new ArrayList();
-        String s = readFile(2);
-        System.out.println(s);
+        int i = 1;
+        hm = new HashMap();
+        hm.put(1, "gettysburg address");
+        hm.put(2, "star spangled banner");
+        String s = readFile(i);
         String findF = "FREE";
         String findS = "BRAVE"; 
         String findT = "NATION";
+        System.out.println("Searching in text: " + hm.get(i));
         bruteForce(s, findF);
-        System.out.print(bfIndex);
+        // bruteForce(s,findS);
+        // bruteForce(s,findT);
     }
     public static String readFile(int n)throws FileNotFoundException{
         String read = "input"+Integer.toString(n)+".txt";
@@ -34,7 +38,7 @@ public class StringSearch{
                 }
             }
             if(j == find.length()){
-                bfIndex.add(i);
+                System.out.println("First occurence found at: " + i);
             }
         }
     }
