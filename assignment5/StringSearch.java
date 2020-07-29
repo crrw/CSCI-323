@@ -2,22 +2,31 @@ import java.util.*;
 import java.io.*;
 
 public class StringSearch{
-    static Map<Integer, String> hm;
+    static Map<Integer, String> inputTextMap;
+    static Map<Integer, String> searchTextMap;
+    static String inputText = "", searchText = "";
+    static long time = 0;
+    static int comp=0, searchIndex=1, textIndex =1;
     public static void main(String[] args)throws FileNotFoundException{
-        int i = 1;
-        hm = new HashMap();
-        hm.put(1, "gettysburg address");
-        hm.put(2, "star spangled banner");
-        String s = readFile(i);
-        String findF = "FREE";
-        String findS = "BRAVE"; 
-        String findT = "NATION";
-        System.out.println("Searching in text: " + hm.get(i));
-        bruteForce(s, findF);
-        // bruteForce(s,findS);
-        // bruteForce(s,findT);
+        inputTextMap = new HashMap();
+        searchTextMap = new HashMap();
+        textIndex = 1;
+        searchIndex = 1;
+        inputTextMap.put(1, "Gettysburg Address");
+        inputTextMap.put(2, "Star Spangled Banner");
+        inputText = inputTextMap.get(textIndex);
+
+        String s = readFile(textIndex);
+
+        searchTextMap.put(1,"FREE");
+        searchTextMap.put(2,"BRAVE");
+        searchTextMap.put(3,"NATION");
+        searchText = searchTextMap.get(searchIndex);
+        bruteForce(s, searchTextMap.get(searchIndex));
     }
     public static String readFile(int n)throws FileNotFoundException{
+        long start = System.currentTimeMillis();
+        time = start;
         String read = "input"+Integer.toString(n)+".txt";
         File file = new File(read);
         Scanner sc = new Scanner(file);
@@ -33,12 +42,17 @@ public class StringSearch{
         for(int i=0; i<=text.length()-find.length(); i++){
             int j;
             for(j=0; j<find.length(); j++){
+                comp++;
                 if(text.charAt(i+j) != find.charAt(j)){
                     break;
                 }
             }
+            
             if(j == find.length()){
-                System.out.println("First occurence found at: " + i);
+                long end = System.currentTimeMillis();
+                time = end-time;
+                Print p = new Print(i,comp,time,searchText,inputText);
+                p.print(p);
             }
         }
     }
