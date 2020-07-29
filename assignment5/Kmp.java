@@ -15,7 +15,7 @@ public class Kmp {
         searchIndex = 1;
         inputTextMap.put(1, "Gettysburg Address");
         inputTextMap.put(2, "Star Spangled Banner");
-        inputText = inputTextMap.get(1);
+        inputText = inputTextMap.get(textIndex);
 
         String s = readFile(textIndex);
 
