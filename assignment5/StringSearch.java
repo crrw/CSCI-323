@@ -28,9 +28,6 @@ public class StringSearch{
         
     }
     public static String readFile(int n)throws FileNotFoundException{
-        long start = System.currentTimeMillis();
-        time = 0;
-        time = start;
         String read = "input"+Integer.toString(n)+".txt";
         File file = new File(read);
         Scanner sc = new Scanner(file);
@@ -43,6 +40,8 @@ public class StringSearch{
     }
 
     public static void bruteForce(String text, String find){
+        long start = System.currentTimeMillis();
+        time = start;
         for(int i=0; i<=text.length()-find.length(); i++){
             int j;
             for(j=0; j<find.length(); j++){
