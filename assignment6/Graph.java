@@ -52,7 +52,7 @@ public class Graph{
     }
 
     public static boolean onboard(int[][] board, int i, int j){
-        if(i >= 0 && i < board.length && j >= 0 &&  j < board.length) return true;
+        if(i >= 0 && i < board.length && j >= 0 &&  j < board[i].length && board[i][j] != -1) return true;
 
         return false;
     }
