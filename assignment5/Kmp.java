@@ -8,7 +8,9 @@ public class Kmp {
     static long time = 0;
     static int comp=0, searchIndex=1, textIndex =1;
     public static void main(String[] args)throws FileNotFoundException{
-        System.out.println("KMP");
+        System.out.print("===============\n");
+        System.out.print("KMP\n");
+        System.out.print("===============");
         inputTextMap = new HashMap();
         searchTextMap = new HashMap();
         textIndex = 1;

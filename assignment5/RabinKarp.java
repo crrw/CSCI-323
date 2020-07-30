@@ -9,7 +9,10 @@ public class RabinKarp {
     static int comparisons = 0, searchIndex = 1, textIndex = 1;
     public final static int uniq = 256;
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException{
+        System.out.print("===============\n");
+        System.out.print("RabinKarp\n");
+        System.out.print("===============");
         inputTextMap = new HashMap();
         searchTextMap = new HashMap();
         textIndex = 1;
@@ -23,7 +26,7 @@ public class RabinKarp {
         searchTextMap.put(3, "NATION");
         for (int i = 1; i <= 3; i++) {
             searchText = searchTextMap.get(searchIndex++);
-            rabinKarp(s, searchText, 101);
+            rabinKarp(s, searchText, 97);
         }
 
     }
@@ -64,7 +67,7 @@ public class RabinKarp {
                     }
                 }
                 if (j == M) {
-                    Print out = new Print(i, comparisons, time, searchText, inputText);
+                    Print out = new Print(i*10, comparisons, time, searchText, inputText);
                     out.print(out);
                     return;
                 }

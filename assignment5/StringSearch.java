@@ -8,6 +8,9 @@ public class StringSearch{
     static long time = 0;
     static int comp=0, searchIndex=1, textIndex =1;
     public static void main(String[] args)throws FileNotFoundException{
+        System.out.print("===============\n");
+        System.out.print("BruteForce\n");
+        System.out.print("===============");
         inputTextMap = new HashMap();
         searchTextMap = new HashMap();
         textIndex = 1;
