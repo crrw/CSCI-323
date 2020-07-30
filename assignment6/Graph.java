@@ -1,44 +1,25 @@
 import java.util.*; 
+import java.io.*;
 
 public class Graph{
-    private HashMap<Integer, Node> hm = new HashMap();
-
-    public static class Node{
-        private int id;
-        LinkedList<Node> adj = new LinkedList();
-
-        private Node(int id){
-            this.id = id;
+    static int[][] board;
+    boolean mode;
+    static int moves = 0;
+    public static void main(String[] args){
+        int N, M; 
+        N = 15;
+        M = 12;
+        board = new int[N][M];
+        for(int i=0; i<N; i++){
+            for(int j=0; j<M; j++){
+                board[i][j] = 0;
+            }
         }
-    }
-    private Node getNode(int id){ 
-        return hm.get(id); 
-    }
-
-
-    public void addEdge(int source, int dest){
-        Node s = getNode(source);
-        Node d = getNode(dest);
-        s.adj.add(d);
-    }
-    public boolean dfs(int source, int dest){
-        Node s = getNode(source);
-        Node d = getNode(dest);
-        HashSet<Integer> visited = new HashSet();
+        board[7][1] = 1;
         
-        return hasPath(s,d,visited);
     }
-    
-    public boolean hasPath(Node s, Node d, HashSet<Integer> visited){
-        if(visited.contains(s.id))return false;
 
-        visited.add(s.id);
-        if(s == d){
-            return true;
-        }
-        for(Node c : s.adj){
-            if(hasPath(c,d,visited)) return true;
-        }
-        return false;
+    public void dfs(int[][] board, int[] start, int[] end, boolean[][] vis){
+
     }
 }
