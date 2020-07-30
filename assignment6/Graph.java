@@ -15,8 +15,17 @@ public class Graph{
                 board[i][j] = 0;
             }
         }
-        board[7][1] = 1;
+        int[] start = new int[]{7,1};
+        int[] end = new int[]{14,11};
         
+        board[14][11] = 1; //destination
+        //blocked pathway
+        board[3][5] = -1;
+        board[6][4] = -1;
+        board[8][12] = -1;
+        board[15][2] = -1;
+        board[7][9] = -1;
+        board[14][3] = -1;
     }
 
     public void dfs(int[][] board, int[] start, int[] end, boolean[][] vis){
