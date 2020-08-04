@@ -3,7 +3,7 @@ import java.io.*;
 
 public class GraphDFS {
     static boolean king = true;
-
+    static List<int[]> list;
     public static void main(String[] args) {
         int[][] board = new int[15][12];
         int[] start = new int[] { 7, 1 };
@@ -22,12 +22,22 @@ public class GraphDFS {
             Arrays.fill(i, Integer.MAX_VALUE);
         }
         dist[start[0]][start[1]] = 0;
+        long startTime = System.currentTimeMillis();
         dfs(board, start, dist);
-
+        long endTime = System.currentTimeMillis();
+        System.out.println("Time: " + (endTime - startTime));
         System.out.println(dist[end[0]][end[1]]);
+        for(int i=0; i<list.size(); i++){
+            System.out.print(list.get(i)[0] + "," + list.get(i)[1] + "\t");
+        }
+
+        // for(int i=0; i<list.size();i++){
+        //     System.out.print("[ " + list.get(i)[0] + "," + list.get(i)[1] + " ]" + "->");
+        // }
     }
 
     public static void dfs(int[][] board, int[] start, int[][] dist) {
+        list = new ArrayList();
         if (king) {
             int[][] moves = { { 0, 1 }, { 1, 0 }, { -1, 0 }, { 0, -1 }, { 1, 1 }, { -1, -1 } };
             for (int[] move : moves) {
@@ -38,6 +48,7 @@ public class GraphDFS {
                     x += move[0];
                     y += move[1];
                     cnt++;
+                    list.add(new int[] {x,y});
                 }
                 if (dist[start[0]][start[1]] + cnt < dist[x - move[0]][y - move[1]]) {
                     dist[x - move[0]][y - move[1]] = dist[start[0]][start[1]] + cnt;
@@ -54,6 +65,7 @@ public class GraphDFS {
                     x += move[0];
                     y += move[1];
                     cnt++;
+                    list.add(new int[] {x,y});
                 }
                 if (dist[start[0]][start[1]] + cnt < dist[x - move[0]][y - move[1]]) {
                     dist[x - move[0]][y - move[1]] = dist[start[0]][start[1]] + cnt;
