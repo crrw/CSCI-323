@@ -21,7 +21,8 @@ public class Graph {
         long startTime = System.currentTimeMillis();
         System.out.println("Distance: " + bfs(board, start, end));
         long endTime = System.currentTimeMillis();
-        System.out.println("Time: " + (endTime-startTime));
+        System.out.println("Time: " + (endTime-startTime) + "ms");
+        System.out.println("Operations: " + list.size());
         // for (int i = 0; i < board.length; i++) {
         //     for (int j = 0; j < board[i].length; j++) {
         //         System.out.print(board[i][j] + "   ");

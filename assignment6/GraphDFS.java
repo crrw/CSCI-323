@@ -25,8 +25,9 @@ public class GraphDFS {
         long startTime = System.currentTimeMillis();
         dfs(board, start, dist);
         long endTime = System.currentTimeMillis();
-        System.out.println("Time: " + (endTime - startTime));
-        System.out.println(dist[end[0]][end[1]]);
+        System.out.println("Time: " + (endTime - startTime) + "ms");
+        System.out.println("Operations: " + list.size());
+        System.out.println("Distance: " + dist[end[0]][end[1]]);
         for(int i=0; i<list.size(); i++){
             System.out.print(list.get(i)[0] + "," + list.get(i)[1] + "\t");
         }

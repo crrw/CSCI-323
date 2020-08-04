@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Astart {
+public class Astar {
     static boolean king = true;
     static List<int[]> list;
     public static void main(String[] args) {
@@ -21,6 +21,7 @@ public class Astart {
         System.out.println("Distance: " + star(board, start, end));
         long endTime = System.currentTimeMillis();
         System.out.println("Time: " + (endTime-startTime) +"ms");
+        System.out.println("Operations: " + list.size());
         // for (int i = 0; i < board.length; i++) {
         //     for (int j = 0; j < board[i].length; j++) {
         //         System.out.print(board[i][j] + "   ");
